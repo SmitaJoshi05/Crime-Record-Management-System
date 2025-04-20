@@ -1,0 +1,39 @@
+body {
+  background-color: #222;
+  color: #88ff00;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-box {
+  background: #333;
+  padding: 30px;
+  border: 2px solid #88ff00;
+  border-radius: 12px;
+  width: 300px;
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background: #444;
+  border: 1px solid #88ff00;
+  color: #fff;
+}
+
+button {
+  background: #88ff00;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.radio-group {
+  margin: 10px 0;
+}

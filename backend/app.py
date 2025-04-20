@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
-from backend.db_config import get_db_connection
+from db_config import get_db_connection
+
 
 app = Flask(__name__)
 

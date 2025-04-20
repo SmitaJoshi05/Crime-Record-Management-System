@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="login-box">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    
+    <div class="radio-group">
+      <label><input type="radio" name="role" value="Admin" checked /> Admin</label>
+      <label><input type="radio" name="role" value="Operator" /> Operator</label>
+    </div>
+    
+    <button onclick="login()">Sign In</button>
+    <div id="message"></div>
+  </div>
+
+  <script>
+    async function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const role = document.querySelector('input[name="role"]:checked').value;
+
+      const response = await fetch('http://127.0.0.1:5000/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password, role })
+      });
+
+      const result = await response.json();
+      const msg = document.getElementById('message');
+
+      if (result.status === "success") {
+        msg.innerText = `Welcome, ${role}! Redirecting...`;
+        msg.style.color = "green";
+        // Redirect based on role
+        setTimeout(() => {
+          window.location.href = `${role.toLowerCase()}_dashboard.html`;
+        }, 1500);
+      } else {
+        msg.innerText = result.message;
+        msg.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>
